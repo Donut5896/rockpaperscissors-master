@@ -1,6 +1,6 @@
 
 
-let userScore = 0;
+/*let userScore = 0;
 let computerScore = 0;
 const userScore_p = document.getElementById("user-score");
 const scoreBoard_div = document.querySelector(".score");
@@ -35,8 +35,13 @@ function convertToWord(letter){
     }
 }
 
+let houseSelection, playerSelection;
+let result = false;
 
+function playRound(event){
+  playerSelection = userChoice.currentTarget.className;
 
+}
 
 
 
@@ -46,13 +51,13 @@ function win(userChoice, computerChoice){
     userScore++;
     userScore_p.innerHTML = userScore;
     result_p.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(computerChoice)}, You win!`;
-   
-    const div = document.createElement('div');
+  
+   console.log(playerSelection);
     let el = document.createElement("img");
-    //el.src = './images/${userChoice.img}'
-    div = userChoice.cloneNode(true);
+    el.src = `./images/${userChoice.img}`;
+    //div = userChoice.cloneNode(true);
     container.appendChild(div)
-    console.log(div);
+    console.log(el);
 
 }
 
@@ -104,4 +109,49 @@ function main(){
     scissors_div.addEventListener('click', () => game("s"));
 }
 
-main();
+main(); */
+
+/*------------------------------------------*/
+const buttons = document.querySelectorAll('.circle');
+const scoreEl = document.getElementById('user-score');
+const choices = ['paper', 'rock', 'scissors'];
+
+let score = 0;
+let userChoice = undefined;
+
+//get buttons input name attribute
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        userChoice = button.getAttribute('data-choice');
+        checkWinner();
+    })
+})
+
+//check winner
+function checkWinner(){
+    const computerChoice = pickRandomChoice();
+     
+    if((userChoice === 'paper' && computerChoice === 'rock')
+    ||(userChoice === 'rock' && computerChoice === 'scissors')
+    ||(userChoice === 'scissors' && computerChoice === 'paper')){
+
+        updateScore(1);
+    }else{
+        updateScore(-1);
+    }
+
+}
+
+
+
+//update score
+function updateScore(value){
+    score += value;
+    scoreEl.innerText = score;
+}
+
+//computer choices
+function pickRandomChoice(){
+    return choices[Math.floor(Math.random() * choices.length)]
+}
+
