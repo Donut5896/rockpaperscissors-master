@@ -112,13 +112,20 @@ function main(){
 main(); */
 
 /*------------------------------------------*/
-const buttons = document.querySelectorAll('.circle');
+const buttons = document.querySelectorAll('.pick');
 const scoreEl = document.getElementById('user-score');
-const choices = ['paper', 'rock', 'scissors'];
+const main = document.getElementById('main');
+const selection = document.getElementById('selection');
+const reset = document.getElementById('reset');
+const user_select = document.getElementById('user_select');
+const computer_select = document.getElementById('computer_select');
+const winner = document.getElementById('winner');
 
+
+const choices = ['paper', 'rock', 'scissors'];
 let score = 0;
 let userChoice = undefined;
-
+ 
 //get buttons input name attribute
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -127,19 +134,38 @@ buttons.forEach((button) => {
     })
 })
 
+//show main| hide selection
+reset.addEventListener('click', () => {
+    main.style.display = 'flex';
+    selection.style.display = 'none';
+})
+
 //check winner
 function checkWinner(){
     const computerChoice = pickRandomChoice();
      
-    if((userChoice === 'paper' && computerChoice === 'rock')
+    //render selection result
+     updateSelection(user_select, userChoice);
+     updateSelection(computer_select, computerChoice);
+   console.log(user_select)
+   console.log(computer_select)
+    if( userChoice === computerChoice){
+        //draw
+        winner.innerText = 'draw';
+    }else if((userChoice === 'paper' && computerChoice === 'rock')
     ||(userChoice === 'rock' && computerChoice === 'scissors')
     ||(userChoice === 'scissors' && computerChoice === 'paper')){
-
+        //user win
         updateScore(1);
+        winner.innerText = 'win';
     }else{
+        //user lost
         updateScore(-1);
+        winner.innerText ='lost';
     }
-
+    //show the selection | hide the main
+    main.style.display = 'none';
+    selection.style.display = 'flex';
 }
 
 
@@ -155,3 +181,15 @@ function pickRandomChoice(){
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
+//selection render
+function updateSelection(selectionEl, choice){
+    //class reset
+    selectionEl.classList.remove('btn-paper');
+    selectionEl.classList.remove('btn-rock');
+    selectionEl.classList.remove('btn-scissors');
+    //update the img
+    const img = selectionEl.querySelector('img');
+    selectionEl.classList.add(`btn-${choice}`);
+    img.src = `./images/icon-${choice}.svg`;
+    img.alt = choice;
+}

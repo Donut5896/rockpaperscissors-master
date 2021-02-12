@@ -26,43 +26,45 @@
   </div>  
 
   <div class="result">
-    <p>paper Beat rock, You win!</p>
+    <p></p>
   </div>
     
-  
+ 
 
-  <div class="games">
-    <div class="game">
+  <div class="games" id="main">
+    <div class="game" >
       
-      <button class="rock circle" id="r" data-choice="rock">
-        .cir
-        <img src="./images/icon-rock.svg" >
+      <button class="btn-rock btn-circle pick"
+       data-choice="rock">
+        <img src="./images/icon-rock.svg" alt="rock icon" >
       </button>
-      <button class="paper circle" id="p" data-choice="paper">
-        <img src="./images/icon-scissors.svg" >
+      <button class="btn-paper btn-circle pick" 
+       data-choice="paper">
+        <img src="./images/icon-paper.svg" alt="paper icon">
       </button>
-      <button class="scissors circle" id="s" data-choice="scissors">
-          <img src="./images/icon-paper.svg" >
+      <button class="btn-scissors btn-circle pick" 
+       data-choice="scissors">
+          <img src="./images/icon-scissors.svg" alt="scissors icon">
       </button>
     </div>
   </div>
 
   <!--pick result-->
-  <div class="selection"> 
+  <div class="selection" id="selection"> 
     <div>
       <h2>You picked</h2>
-      <button class="paper circle" >
-        <img src="./images/icon-scissors.svg" >
+      <button class="btn-paper btn-circle" id="user_select">
+        <img src="./images/icon-scissors.svg" alt="paper icon" >
       </button>
     </div>
     <div class="big-text">
-      <p>You <span id="win">win</span><p>
+      <p>You <span id="winner">win</span><p>
       <button class="btn" id="reset">Play again</button>
     </div>
     <div>
       <h2>The house pick</h2>
-      <button class="scissors circle" >
-        <img src="./images/icon-paper.svg">
+      <button class="btn-scissors btn-circle" id="computer_select">
+        <img src="./images/icon-paper.svg" alt="scissors icon" >
       </button>
     </div>
   </div>

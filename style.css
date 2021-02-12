@@ -36,6 +36,10 @@ body {
   height: 100vh;
 }
 
+h2 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
 .bigbox {
   max-width: 100%;
   display: flex;
@@ -112,24 +116,32 @@ body {
   z-index: -1;
 }
 
-.circle {
+.btn-circle {
   border-radius: 50%;
   background-color: #fff;
   padding: 1.5rem;
   cursor: pointer;
   margin: 0 25px;
 }
-.paper {
+
+.btn-circle:focus {
+  outline: none;
+}
+.btn-circle:active {
+  transform: scale(0.9);
+}
+
+.btn-paper {
   border: 15px solid var(--paper-primary);
   box-shadow: inset -5px 5px 2px rgba(0, 0, 0, 0.2),
     inset 5px -5px 2px rgba(0, 0, 0, 0.2);
 }
-.rock {
+.btn-rock {
   border: 15px solid var(--rock-primary);
   box-shadow: inset -5px 5px 2px rgba(0, 0, 0, 0.2),
     inset 5px -5px 2px rgba(0, 0, 0, 0.2);
 }
-.scissors {
+.btn-scissors {
   border: 15px solid var(--scissors-primary);
   box-shadow: inset -5px 5px 2px rgba(0, 0, 0, 0.2),
     inset 5px -5px 2px rgba(0, 0, 0, 0.2);
@@ -170,9 +182,11 @@ body {
   font-size: 20px;
   padding: 10px 25px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .selection {
-  display: flex;
+  display: none;
+
   justify-content: space-between;
   align-items: center;
   text-align: center;
@@ -182,7 +196,7 @@ body {
   max-width: 100%;
   margin: 0 auto;
 }
-.selection .circle {
+.selection .btn-circle {
   margin: 50px;
   transform: scale(1.2);
 }
