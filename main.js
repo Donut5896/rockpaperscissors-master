@@ -121,6 +121,11 @@ const user_select = document.getElementById('user_select');
 const computer_select = document.getElementById('computer_select');
 const winner = document.getElementById('winner');
 
+//modal buttons
+const openBtn = document.getElementById("open");
+const closeBtn = document.getElementById("close");
+const modal = document.getElementById("modal");
+
 
 const choices = ['paper', 'rock', 'scissors'];
 let score = 0;
@@ -140,6 +145,23 @@ reset.addEventListener('click', () => {
     selection.style.display = 'none';
 })
 
+//open rules botton
+openBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+} )
+
+//close button
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+})
+
+
+
+
+
+
+
+
 //check winner
 function checkWinner(){
     const computerChoice = pickRandomChoice();
@@ -147,11 +169,11 @@ function checkWinner(){
     //render selection result
      updateSelection(user_select, userChoice);
      updateSelection(computer_select, computerChoice);
-   console.log(user_select)
-   console.log(computer_select)
+  
     if( userChoice === computerChoice){
         //draw
         winner.innerText = 'draw';
+
     }else if((userChoice === 'paper' && computerChoice === 'rock')
     ||(userChoice === 'rock' && computerChoice === 'scissors')
     ||(userChoice === 'scissors' && computerChoice === 'paper')){
@@ -160,7 +182,7 @@ function checkWinner(){
         winner.innerText = 'win';
     }else{
         //user lost
-        updateScore(-1);
+         updateScore(-1);
         winner.innerText ='lost';
     }
     //show the selection | hide the main
